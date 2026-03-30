@@ -1,0 +1,29 @@
+baseURL = 'https://bugratezcan.com/'
+languageCode = 'en-US'
+title = 'bugra tezcan'
+theme = 'hugo-trainsh'
+disableKinds = ["RSS"]
+
+[params]
+  mainSections = ["post"]
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 1
+
+  [[menus.main]]
+    name = 'Blog'
+    pageRef = '/post'
+    weight = 2
+
+  [[menus.main]]
+    name = 'Me'
+    pageRef = '/me'
+    weight = 3
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = '0.114.0'

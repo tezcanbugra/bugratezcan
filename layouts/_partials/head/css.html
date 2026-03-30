@@ -1,0 +1,56 @@
+{{- with resources.Get "css/style.css" -}}
+  {{- $css := . -}}
+  {{- if hugo.IsProduction -}}
+    {{- $css = $css | minify -}}
+  {{- end -}}
+  {{- with $css | fingerprint -}}
+    <link rel="stylesheet" href="{{ .RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ .Data.Integrity }}" crossorigin="anonymous"{{ end }}>
+  {{- end -}}
+{{- end -}}
+
+<style>
+/* Custom Color Theme override */
+body[data-theme="retro"], :root[data-theme="retro"], [data-theme="retro"] {
+    --background-color: #092277 !important;
+    --heading-color: #e7eff2 !important;
+    --text-color: #e7eff2 !important;
+    --link-color: #e2b854 !important;
+    --visited-color: #e2b854 !important;
+    --accent-color: #e2b854 !important;
+    --code-background-color: #041040 !important;
+    --code-color: #e7eff2 !important;
+    --blockquote-color: #b0c4de !important;
+    --border-color: #e7eff2 !important;
+    --muted-color: #a0b8d0 !important;
+    --selection-bg: #e2b854 !important;
+    --selection-text: #092277 !important;
+    --input-bg: #092277 !important;
+    --hover-bg: rgba(226, 184, 84, 0.2) !important;
+    --dialog-border: #e7eff2 !important;
+    --dialog-bg: #092277 !important;
+}
+
+/* Disable the interactive look of the theme toggle since it's locked */
+.theme-toggle {
+    cursor: default !important;
+}
+.theme-toggle:hover {
+    color: var(--heading-color) !important;
+}
+</style>
+
+{{- /* Load Pygments styles only when the current page contains code blocks (Bear Blog behavior). */ -}}
+{{- $raw := .RawContent | default "" -}}
+{{- $hasCode := in $raw "```" -}}
+
+{{- if $hasCode -}}
+  {{- with resources.Get "css/pygments-friendly.css" -}}
+    {{- $css := . -}}
+    {{- if hugo.IsProduction -}}
+      {{- $css = $css | minify -}}
+    {{- end -}}
+    {{- with $css | fingerprint -}}
+      <link rel="stylesheet" href="{{ .RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ .Data.Integrity }}" crossorigin="anonymous"{{ end }}>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

@@ -1,0 +1,71 @@
+/* Retro Dark Gray Theme Override */
+
+/* Base colors - force dark regardless of prefers-color-scheme */
+body {
+    background-color: #1a1a1a !important;
+    color: #cccccc !important;
+}
+
+/* Links (Retro Amber/Orange or Green) - Let's go with a retro monospace green */
+a {
+    color: #4af626 !important;
+}
+
+/* Header */
+header {
+    background: #1a1a1a !important;
+    border-bottom: 2px solid #4af626 !important;
+}
+
+header a {
+    color: #ffffff !important;
+}
+
+header a:hover {
+    color: #4af626 !important;
+}
+
+/* Blockquotes */
+blockquote {
+    background: #242424 !important;
+    border-left: 5px solid #4af626 !important;
+    color: #eeeeee !important;
+}
+
+/* Meta Data and Menus */
+.article-meta, .menu a {
+    background: #242424 !important;
+    color: #cccccc !important;
+    border-color: #4af626 !important;
+}
+
+/* Tables */
+table {
+    border-top: 1px solid #4af626 !important;
+    border-bottom: 1px solid #4af626 !important;
+}
+table thead th { 
+    border-bottom: 1px solid #4af626 !important; 
+    color: #ffffff !important;
+}
+tr:nth-child(even) { 
+    background: #242424 !important; 
+}
+tr:nth-child(odd) { 
+    background: #1a1a1a !important; 
+}
+
+/* Code Blocks */
+pre {
+    border: 2px solid #4af626 !important;
+    background: #000000 !important;
+}
+code {
+    background-color: #000000 !important;
+    color: #4af626 !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+}
