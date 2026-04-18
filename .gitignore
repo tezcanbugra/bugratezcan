@@ -2,6 +2,9 @@
 public/
 resources/_gen/
 
+# Local Hugo CLI (install via package manager or CI)
+hugo.exe
+
 # OS files
 .DS_Store
 Thumbs.db

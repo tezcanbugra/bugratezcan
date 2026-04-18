@@ -1,0 +1,28 @@
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+{{- with .Description | default .Summary }}
+<meta property="og:description" content="{{ . | plainify | truncate 200 }}">
+{{- end }}
+{{- with .Params.cover }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{- else }}
+{{- with .Site.Params.defaultOgImage }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{- end }}
+{{- end }}
+
+{{- /* Twitter / X Card */}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+{{- with .Description | default .Summary }}
+<meta name="twitter:description" content="{{ . | plainify | truncate 200 }}">
+{{- end }}
+{{- with .Params.cover }}
+<meta name="twitter:image" content="{{ . | absURL }}">
+{{- else }}
+{{- with .Site.Params.defaultOgImage }}
+<meta name="twitter:image" content="{{ . | absURL }}">
+{{- end }}
+{{- end }}

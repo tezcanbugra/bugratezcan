@@ -1,0 +1,8 @@
+{{- $limit := .Get "limit" | default (.Page.Site.Params.home.recent.limit | default 5) -}}
+{{- $title := .Get "title" | default (i18n "home_most_recent_posts") -}}
+{{- $sections := default (slice "posts") .Page.Site.Params.mainSections -}}
+{{- $posts := where .Page.Site.RegularPages "Section" "in" $sections -}}
+{{- $pages := first (int $limit) ($posts.ByDate.Reverse) -}}
+
+<h2>{{ $title }}</h2>
+{{ partial "post/blog-posts.html" (dict "pages" $pages) }}

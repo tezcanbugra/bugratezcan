@@ -10,6 +10,27 @@
     </a>
   </div>
 
+  {{- $translations := .AllTranslations -}}
+  {{- if lt (len $translations) 2 -}}
+    {{- $translations = site.Home.AllTranslations -}}
+  {{- end -}}
+  {{- if gt (len $translations) 1 -}}
+  <span class="lang-dropdown header-lang">
+    <button class="lang-toggle" type="button" aria-label="Select language" aria-expanded="false">
+      <span class="lang-name">{{ $.Site.Language.LanguageName }}</span>
+      <svg class="lang-arrow" width="12" height="12" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.1338 6.16015C16.3217 5.95783 16.6375 5.94599 16.8399 6.13378C17.0421 6.32166 17.054 6.6375 16.8662 6.83984L10.3662 13.8398L10.2891 13.9082C10.2053 13.9675 10.1043 14 9.99999 14C9.86101 14 9.72836 13.9417 9.63377 13.8398L3.13374 6.83984L3.07221 6.75976C2.95129 6.56111 2.98312 6.29824 3.16011 6.13378C3.33708 5.96954 3.60085 5.95776 3.78999 6.09277L3.86616 6.16015L9.99999 12.7666L16.1338 6.16015Z"></path></svg>
+    </button>
+    <span class="lang-menu" role="menu">
+      {{- range $t := $translations -}}
+        <a href="{{ $t.RelPermalink }}" role="menuitem" class="{{ if eq $t.Lang $.Lang }}lang-active{{ end }}">
+          <span class="lang-item-name">{{ $t.Site.Language.LanguageName }}</span>
+          <span class="lang-item-check"></span>
+        </a>
+      {{- end -}}
+    </span>
+  </span>
+  {{- end -}}
+
   <nav class="site-nav">
     {{- with site.Params.nav -}}
     {{- $html := . | markdownify -}}

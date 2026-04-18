@@ -42,9 +42,9 @@
         });
       }
 
-      // Language dropdown toggle
-      var dropdown = document.querySelector('.lang-dropdown');
-      if (dropdown) {
+      // Language dropdown toggles (header + footer)
+      var dropdowns = document.querySelectorAll('.lang-dropdown');
+      dropdowns.forEach(function(dropdown) {
         var langToggle = dropdown.querySelector('.lang-toggle');
 
         langToggle.addEventListener('click', function(e) {
@@ -59,7 +59,7 @@
             langToggle.setAttribute('aria-expanded', 'false');
           }
         });
-      }
+      });
     });
   </script>
 
